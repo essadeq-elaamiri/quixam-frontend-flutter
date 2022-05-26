@@ -1,4 +1,5 @@
 import 'package:quixam_frontend_flutter/entities/question.dart';
+import 'package:quixam_frontend_flutter/entities/student.dart';
 
 class Quiz {
   Id? _iId;

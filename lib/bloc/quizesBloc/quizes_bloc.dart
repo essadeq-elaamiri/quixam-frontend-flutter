@@ -2,6 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
 import 'package:quixam_frontend_flutter/entities/quiz.dart';
+import 'package:quixam_frontend_flutter/entities/student.dart';
+import 'package:quixam_frontend_flutter/entities/teacher.dart';
 import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
 
 part 'quizes_event.dart';

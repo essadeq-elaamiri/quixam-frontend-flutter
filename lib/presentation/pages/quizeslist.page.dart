@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
+import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
 import 'package:quixam_frontend_flutter/entities/quiz.dart';
 import 'package:quixam_frontend_flutter/presentation/widgets/quiz_list_item.dart';
 

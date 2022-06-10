@@ -1,3 +1,4 @@
+import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
 import 'package:quixam_frontend_flutter/entities/question.dart';
 import 'package:quixam_frontend_flutter/entities/student.dart';
 

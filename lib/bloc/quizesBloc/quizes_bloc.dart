@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
 import 'package:quixam_frontend_flutter/entities/quiz.dart';
 import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
 

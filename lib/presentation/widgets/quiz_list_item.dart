@@ -48,11 +48,11 @@ class QuizesListItem extends StatelessWidget {
           ),
           IconButton(onPressed: () {
             print(quiz.title!);
-                BlocProvider.of<QuestionsBloc>(context).add(GetQuizQuestionsEvent(quizId: quiz.iId!);
+                BlocProvider.of<QuestionsBloc>(context).add(GetQuizQuestionsEvent(quizId: quiz.iId!));
 
-                          Navigator.pushNamed(context, "/conversation",
+                Navigator.pushNamed(context, "/QuizDetails",
                               arguments: {
-                                'clickedContact': state.contastsList[index]
+                                'quiz': quiz,
                               });
           }, icon: Icon(
             Icons.chevron_right_rounded,

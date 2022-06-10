@@ -1,3 +1,4 @@
-abstract class  MainRepository{
+class  MainRepository{
+  // quizes
   
 }

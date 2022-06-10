@@ -10,7 +10,6 @@ class QuestionsListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      
         child: Padding(
       padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
       child: Row(

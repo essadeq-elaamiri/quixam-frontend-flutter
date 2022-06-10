@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
 import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
 import 'package:quixam_frontend_flutter/entities/question.dart';
 import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
@@ -16,17 +17,21 @@ class QuestionsBloc extends Bloc<QuestionsEvent, QuestionsState> {
       print(event);
     });
 
-    on<GetAllQuestionsEvent>((event, emit) => {
+    on<GetAllQuestionsEvent>((event, emit) {
 
     });
-    on<GetOneQuestionEvent>((event, emit) => {
+    on<GetOneQuestionEvent>((event, emit) {
 
     });
-    on<SaveQuestionEvent>((event, emit) => {
+    on<SaveQuestionEvent>((event, emit) {
 
     });
-    on<UpdateQuestionEvent>((event, emit) => {
+    on<UpdateQuestionEvent>((event, emit)  {
 
+    });
+
+    on<GetQuizQuestionsEvent>((event, emit){
+      print("qq");
     });
   }
 }

@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quixam_frontend_flutter/bloc/questionsBloc/questions_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quiz_details.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quizeslist.page.dart';
 import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  
+  var mainRepository = MainRepository();
 
   // This widget is the root of your application.
   @override
@@ -19,9 +21,10 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
               create: (context) => QuizesBloc(
-                  mainRepository: MainRepository(),
+                  mainRepository: mainRepository ,
                   quizesState: QuizesState(
-                      quizList: [], requestState: RequestState.none))),
+                      quizList: [], requestState: RequestState.none)),),
+          BlocProvider(create: (context) => QuestionsBloc(mainRepository: mainRepository, questionsState: QuestionsState(questionList: [], requestState: RequestState.none)),),
         ],
         child: MaterialApp(
           themeMode: ThemeMode.system,

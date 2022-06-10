@@ -5,9 +5,20 @@ part of 'quizes_bloc.dart';
 abstract class QuizesEvent {}
 
 class GetAllQuizesEvent extends QuizesEvent{}
+
 class GetOneQuizEvent extends QuizesEvent{
   Id quizId;
   GetOneQuizEvent({required this.quizId});
+}
+
+class GetAllStudentQuizesEvent extends QuizesEvent{
+  Student student;
+  GetAllStudentQuizesEvent({required this.student});
+}
+
+class GetAllTeacherQuizesEvent extends QuizesEvent{
+  Teacher teacher;
+  GetAllTeacherQuizesEvent({required this.teacher});
 }
 
 class SaveQuizEvent extends QuizesEvent{

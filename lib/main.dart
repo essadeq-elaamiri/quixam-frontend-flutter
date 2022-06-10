@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quixam_frontend_flutter/bloc/answersBloc/answers_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/questionsBloc/questions_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
+import 'package:quixam_frontend_flutter/bloc/studentsBloc/students_bloc.dart';
+import 'package:quixam_frontend_flutter/bloc/teachersBloc/teachers_bloc.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/question_details.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quiz_details.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quizeslist.page.dart';
@@ -26,6 +29,10 @@ class MyApp extends StatelessWidget {
                   quizesState: QuizesState(
                       quizList: [], requestState: RequestState.none)),),
           BlocProvider(create: (context) => QuestionsBloc(mainRepository: mainRepository, questionsState: QuestionsState(questionList: [], requestState: RequestState.none)),),
+        BlocProvider(create: (context) => AnswersBloc(mainRepository: mainRepository, answersState: AnswersState(answerList: [], requestState: RequestState.none)),),
+        BlocProvider(create: (context) => TeachersBloc(mainRepository: mainRepository, teachersState: TeachersState(teacherList: [], requestState: RequestState.none)),),
+        BlocProvider(create: (context) => StudentsBloc(mainRepository: mainRepository, studentsState: StudentsState(studentList: [], requestState: RequestState.none)),),
+        
         ],
         child: MaterialApp(
           themeMode: ThemeMode.system,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/questionsBloc/questions_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
+import 'package:quixam_frontend_flutter/presentation/pages/question_details.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quiz_details.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quizeslist.page.dart';
 import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
           routes: {
             "/QuizesList": (context) => QuizesList(),
             "/QuizDetails": (context) => QuizDetails(),
+            "/QuestionDetails":(context) => QuestionDetails(),
           },
           initialRoute: "/QuizesList",
         ));

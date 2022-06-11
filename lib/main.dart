@@ -11,11 +11,10 @@ import 'package:quixam_frontend_flutter/presentation/pages/quizeslist.page.dart'
 import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  
   var mainRepository = MainRepository();
 
   // This widget is the root of your application.
@@ -24,25 +23,45 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => QuizesBloc(
-                  mainRepository: mainRepository ,
-                  quizesState: QuizesState(
-                      quizList: [], requestState: RequestState.none)),),
-          BlocProvider(create: (context) => QuestionsBloc(mainRepository: mainRepository, questionsState: QuestionsState(questionList: [], requestState: RequestState.none)),),
-        BlocProvider(create: (context) => AnswersBloc(mainRepository: mainRepository, answersState: AnswersState(answerList: [], requestState: RequestState.none)),),
-        BlocProvider(create: (context) => TeachersBloc(mainRepository: mainRepository, teachersState: TeachersState(teacherList: [], requestState: RequestState.none)),),
-        BlocProvider(create: (context) => StudentsBloc(mainRepository: mainRepository, studentsState: StudentsState(studentList: [], requestState: RequestState.none)),),
-        
+            create: (context) => QuizesBloc(
+                mainRepository: mainRepository,
+                quizesState:
+                    QuizesState(quizList: [], requestState: RequestState.none)),
+          ),
+          BlocProvider(
+            create: (context) => QuestionsBloc(
+                mainRepository: mainRepository,
+                questionsState: QuestionsState(
+                    questionList: [], requestState: RequestState.none)),
+          ),
+          BlocProvider(
+            create: (context) => AnswersBloc(
+                mainRepository: mainRepository,
+                answersState: AnswersState(
+                    answerList: [], requestState: RequestState.none)),
+          ),
+          BlocProvider(
+            create: (context) => TeachersBloc(
+                mainRepository: mainRepository,
+                teachersState: TeachersState(
+                    teacherList: [], requestState: RequestState.none)),
+          ),
+          BlocProvider(
+            create: (context) => StudentsBloc(
+                mainRepository: mainRepository,
+                studentsState: StudentsState(
+                    studentList: [], requestState: RequestState.none)),
+          ),
         ],
         child: MaterialApp(
           themeMode: ThemeMode.system,
-          theme: ThemeData(primarySwatch: Colors.orange)/*ThemeData.dark()*/,
+          theme: ThemeData(primarySwatch: Colors.orange) /*ThemeData.dark()*/,
           darkTheme: ThemeClass.darkTheme,
           debugShowCheckedModeBanner: false,
           routes: {
             "/QuizesList": (context) => QuizesList(),
             "/QuizDetails": (context) => QuizDetails(),
-            "/QuestionDetails":(context) => QuestionDetails(),
+            "/QuestionDetails": (context) => QuestionDetails(),
           },
           initialRoute: "/QuizesList",
         ));
@@ -51,7 +70,6 @@ class MyApp extends StatelessWidget {
 
 class ThemeClass {
   static ThemeData lightTheme = ThemeData(
-    
       primaryColor: Colors.orange,
       scaffoldBackgroundColor: Colors.white,
       colorScheme: ColorScheme.light(),

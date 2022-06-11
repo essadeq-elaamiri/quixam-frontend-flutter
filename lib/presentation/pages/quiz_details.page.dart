@@ -7,6 +7,7 @@ import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
 import 'package:quixam_frontend_flutter/entities/question.dart';
 import 'package:quixam_frontend_flutter/entities/quiz.dart';
 import 'package:quixam_frontend_flutter/presentation/widgets/question_list_item.dart';
+import 'package:quixam_frontend_flutter/presentation/widgets/quiz_details_head_section.dart';
 
 class QuizDetails extends StatelessWidget {
   const QuizDetails({Key? key}) : super(key: key);
@@ -26,6 +27,9 @@ class QuizDetails extends StatelessWidget {
           return Padding(
             child: Column(
               children: [
+                Card(
+                  child: QuizDetailsInfo(quiz: quiz);
+                ),
                 Expanded(
                   child: ListView.builder(
                     // TODO: state quizes to listview

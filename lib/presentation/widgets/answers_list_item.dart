@@ -17,6 +17,8 @@ class AnswersListItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+         
+          
           Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +53,7 @@ class AnswersListItem extends StatelessWidget {
             
           }, icon: Icon(
             Icons.delete,
-            color: Color(0xFF95A1AC),
+            color: Color.fromARGB(255, 254, 72, 59),
             size: 24,
             
           ))

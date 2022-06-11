@@ -30,7 +30,7 @@ class _QuizesListState extends State<QuizesList> {
                     // TODO: state quizes to listview
                     itemCount: 10,
                     itemBuilder: ((context, index) {
-                    return QuizesListItem(quiz: Quiz(title: "hello", createdAt: CreatedAt(date: "2014-05-19")),);
+                    return QuizesListItem(quiz: Quiz(title: "hello", createdAt: CreatedAt(date: "2014-05-19"), questions:  [], students: []),);
                   })),
                 ),
               ],
@@ -42,6 +42,8 @@ class _QuizesListState extends State<QuizesList> {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             print("Flutting");
+             // AddQuizForm
+            Navigator.pushNamed(context, "/AddQuizForm");
           },
           hoverColor: Colors.orange,
           child: Icon(Icons.plus_one)),

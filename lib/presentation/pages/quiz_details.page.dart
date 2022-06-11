@@ -14,13 +14,14 @@ class QuizDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // access routing sent arguments 
-    final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
+    // access routing sent arguments
+    final arguments = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
     Quiz quiz = arguments['quiz'];
     //print(arguments);
     return Scaffold(
       appBar: AppBar(
-          title: Text("[${quiz.title}] questions"),
+          title: Text("[${quiz.title}] quiz details"),
           backgroundColor: Theme.of(context).appBarTheme.backgroundColor),
       body: BlocBuilder<QuestionsBloc, QuestionsState>(
         builder: (context, state) {
@@ -28,15 +29,19 @@ class QuizDetails extends StatelessWidget {
             child: Column(
               children: [
                 Card(
-                  child: QuizDetailsInfo(quiz: quiz);
+                  child: QuizDetailsInfo(quiz: quiz),
                 ),
                 Expanded(
                   child: ListView.builder(
-                    // TODO: state quizes to listview
-                    itemCount: 10,
-                    itemBuilder: ((context, index) {
-                    return QuestionsListItem(question: Question(iId: Id(oid: '14225'), score: 154, content: "Content ?"));
-                  })),
+                      // TODO: state quizes to listview
+                      itemCount: 10,
+                      itemBuilder: ((context, index) {
+                        return QuestionsListItem(
+                            question: Question(
+                                iId: Id(oid: '14225'),
+                                score: 154,
+                                content: "Content ?"));
+                      })),
                 ),
               ],
             ),
@@ -46,7 +51,8 @@ class QuizDetails extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            print("Flutting");
+            print("Flutting nt ");
+           
           },
           hoverColor: Colors.orange,
           child: Icon(Icons.plus_one)),

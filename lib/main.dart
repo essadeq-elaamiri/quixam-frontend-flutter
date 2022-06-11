@@ -5,6 +5,7 @@ import 'package:quixam_frontend_flutter/bloc/questionsBloc/questions_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/studentsBloc/students_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/teachersBloc/teachers_bloc.dart';
+import 'package:quixam_frontend_flutter/presentation/pages/addquiz.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/question_details.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quiz_details.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quizeslist.page.dart';
@@ -55,13 +56,14 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           themeMode: ThemeMode.system,
-          theme: ThemeData(primarySwatch: Colors.orange) /*ThemeData.dark()*/,
+          theme: ThemeData(primarySwatch: Colors.purple) /*ThemeData.dark()*/,
           darkTheme: ThemeClass.darkTheme,
           debugShowCheckedModeBanner: false,
           routes: {
             "/QuizesList": (context) => QuizesList(),
             "/QuizDetails": (context) => QuizDetails(),
             "/QuestionDetails": (context) => QuestionDetails(),
+            "/AddQuizForm":(context) => AddQuizForm(),
           },
           initialRoute: "/QuizesList",
         ));
@@ -70,7 +72,7 @@ class MyApp extends StatelessWidget {
 
 class ThemeClass {
   static ThemeData lightTheme = ThemeData(
-      primaryColor: Colors.orange,
+      primaryColor: Colors.purple,
       scaffoldBackgroundColor: Colors.white,
       colorScheme: ColorScheme.light(),
       appBarTheme: AppBarTheme(

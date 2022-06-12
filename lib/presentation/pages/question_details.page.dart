@@ -44,6 +44,10 @@ class QuestionDetails extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             print("Flutting");
+            //AddAnswerForm
+             Navigator.pushNamed(context, "/AddAnswerForm", arguments: {
+                    'question': question,
+                  });
           },
           hoverColor: Colors.orange,
           child: Icon(Icons.plus_one)),

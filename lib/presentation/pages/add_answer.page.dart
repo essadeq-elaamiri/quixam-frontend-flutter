@@ -8,7 +8,7 @@ class AddAnswerForm extends StatelessWidget {
   final Color preferColor = Color.fromRGBO(249, 168, 38, 1);
   @override
   Widget build(BuildContext context) {
-    String dropdownValue = 'One';
+    String dropdownValue = 'Not correct';
     // access routing sent arguments
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
@@ -43,7 +43,7 @@ class AddAnswerForm extends StatelessWidget {
                   Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                       child: Icon(
-                        Icons.person_add,
+                        Icons.question_answer,
                         color: preferColor,
                         size: 155,
                       )),
@@ -98,40 +98,13 @@ class AddAnswerForm extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 22),
-                    child: DropdownButton<String>(
+                    child: DropdownButtonFormField<String>(
+                      isExpanded: true,
+                      hint: Text("Is correct ?"),
                       value: dropdownValue,
                       icon: const Icon(Icons.arrow_downward),
                       elevation: 16,
-                      style: const TextStyle(color: Colors.deepPurple),
-                      underline: Container(
-                        height: 2,
-                        color: preferColor,
-                      ),
-                      onChanged: (String? newValue) {},
-                      items: <String>['One', 'Two', 'Free', 'Four']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 22),
-                    child: TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter email.';
-                        }
-                        if (value.length < 5) {
-                          return "Please enter a valid email (> 5 chars).";
-                        }
-                        return null;
-                      },
-                      controller: null,
-                      autofocus: true,
-                      obscureText: false,
+                      style: const TextStyle(color: Colors.orange),                      
                       decoration: InputDecoration(
                         hintText: 'Email',
                         enabledBorder: OutlineInputBorder(
@@ -150,8 +123,16 @@ class AddAnswerForm extends StatelessWidget {
                         ),
                         suffixIcon: null,
                       ),
-                      style: null,
-                      textAlign: TextAlign.center,
+                      onChanged: (String? newValue) {
+                        print(newValue);
+                      },
+                      items: <String>['Correct', 'Not correct']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
                     ),
                   ),
                   Row(

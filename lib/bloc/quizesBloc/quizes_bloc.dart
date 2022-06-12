@@ -37,7 +37,9 @@ class QuizesBloc extends Bloc<QuizesEvent, QuizesState> {
 */
     //
  
-    on<SaveQuizEvent>((event, emit) => {
+    on<SaveQuizEvent>((event, emit){
+
+      mainRepository.addTeachersQuiz(event.teacherId, event.quiz);
 
     });
     on<UpdateQuizEvent>((event, emit) => {

@@ -28,11 +28,11 @@ class QuizesList extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                     // TODO: state quizes to listview
-                    itemCount: state.quizList.length,
+                    itemCount: 10,//state.quizList.length,
                     itemBuilder: ((context, index) {
                     
                     //return QuizesListItem(quiz: Quiz(title: "hello", createdAt: CreatedAt(date: "2014-05-19"), questions:  [], students: []),);
-                    return QuizesListItem(quiz: state.quizList[index]);
+                    return QuizesListItem(quiz: state.quizList[0]);
                   })),
                 ),
               ],
@@ -45,7 +45,10 @@ class QuizesList extends StatelessWidget {
           onPressed: () {
             print("Flutting");
              // AddQuizForm
-            Navigator.pushNamed(context, "/AddQuizForm");
+            //Navigator.pushNamed(context, "/AddQuizForm");
+            Navigator.pushNamed(context, "/AddQuizForm", arguments: {
+                     'teacherId': teacher.sId
+                  });
           },
           hoverColor: Colors.orange,
           child: Icon(Icons.add)),

@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
+import 'package:quixam_frontend_flutter/entities/quiz.dart';
 
 class AddQuizForm extends StatelessWidget {
-  const AddQuizForm({Key? key}) : super(key: key);
-
+  
+  TextEditingController quizTitleController = TextEditingController();
+   TextEditingController accessKeyController = TextEditingController();
+  
+  
   @override
   Widget build(BuildContext context) {
+    // access routing sent arguments
+    final arguments = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
+    String teacherId = arguments['teacherId'];
+    print(teacherId);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
@@ -47,7 +58,7 @@ class AddQuizForm extends StatelessWidget {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 22),
                     child: TextFormField(
-                      controller: null,
+                      controller: quizTitleController,
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -75,7 +86,7 @@ class AddQuizForm extends StatelessWidget {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 22),
                     child: TextFormField(
-                      controller: null,
+                      controller: accessKeyController,
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -131,6 +142,9 @@ class AddQuizForm extends StatelessWidget {
                                 fontSize: 14, fontWeight: FontWeight.bold)),
                         onPressed: () {
                           print('Button pressed ...');
+                          Quiz newQuiz = Quiz(title: quizTitleController.text);
+                          print(newQuiz.title);
+                          BlocProvider.of<QuizesBloc>(context).add(SaveQuizEvent(quiz: newQuiz, teacherId: teacherId));
                         },
                         child: Text('Continue'),
                       ),

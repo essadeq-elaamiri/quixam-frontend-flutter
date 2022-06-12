@@ -107,7 +107,7 @@ class QuizDetailsInfo extends StatelessWidget {
                   //BlocProvider.of<StudentsBloc>(context).add();
 
                   Navigator.pushNamed(context, "/StudentsList", arguments: {
-                    'quiz': quiz,
+                    'quiz': quiz, 'teacherId': quiz.teacher
                   });
               }, icon: Icon(Icons.list, color: Colors.orange[600],)),
                 ],

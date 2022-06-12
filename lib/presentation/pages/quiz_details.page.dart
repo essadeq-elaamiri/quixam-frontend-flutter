@@ -42,11 +42,11 @@ class QuizDetails extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                       // TODO: state quizes to listview
-                      itemCount: state.questionList.length,
+                      itemCount: 10,//state.questionList.length,
                       itemBuilder: ((context, index) {
-                        print(state.questionList[index].content);
+                        print(state.questionList[0].content);
                         return QuestionsListItem(
-                            question: state.questionList[index]);
+                            question: state.questionList[0]);
                       })),
                 ),
               ],

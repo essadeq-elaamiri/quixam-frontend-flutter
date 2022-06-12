@@ -13,8 +13,7 @@ class MainRepositoryImp {
   final String baseUrl = "http://localhost:8000/api/";
 
   // lets concider that this is teachers login
-  final jsonTeacher = 
-"""
+  final jsonTeacher = """
 {
             "_id": "62718bf3fc6495a9942d2a59",
             "firstname": "sslma",
@@ -30,14 +29,12 @@ class MainRepositoryImp {
         }
 """;
 
-  
   Teacher? login(String email, String password) {
     Teacher teacher = Teacher.fromJson(json.decode(jsonTeacher));
     //print(json.decode(jsonTeacher));
     return teacher; //Teacher(iId: String(oid: "62718bf3fc6495a9942d2a59"));
   }
 
-  
   void addQuestionsAnswer(Answer answer) {
     // TODO: implement addQuestionsAnswer
     http
@@ -49,52 +46,58 @@ class MainRepositoryImp {
         .then((value) => {print(value)});
   }
 
-  
   void addQuizsQuestion(Question question) {
     // TODO: implement addQuizsQuestion
   }
 
-  
   void addQuizsStudent(Student student) {
     // TODO: implement addQuizsStudent
   }
 
-  
-  void addTeachersQuiz(Quiz quiz) {
-    // TODO: implement addTeachersQuiz
+  void addTeachersQuiz(String teacherId, Quiz quiz) async {
+    // posting quiz
+    final response = http.post(
+      Uri.parse(baseUrl + 'quizes/'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: quiz.toJson(),
+    ).then((value) async {
+       await http.post(
+      Uri.parse(baseUrl + "teachers/${teacherId}/quiz/"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({"quizID": "${Quiz.fromJson(value as Map<String, dynamic>).sId}"}),
+    );
+    });
   }
 
-  
   void deleteQuestionsAnswer(String answerId) {
     // TODO: implement deleteQuestionsAnswer
   }
 
-  
   void deleteQuizsQuestion(String questionId) {
     // TODO: implement deleteQuizsQuestion
   }
 
-  
   void deleteQuizsStudent(String studentId) {
     // TODO: implement deleteQuizsStudent
   }
 
-  
   void deleteTeachersQuiz(String quizId) {
     // TODO: implement deleteTeachersQuiz
   }
 
-  
-
-
-  
   Future<List<Question>>? getQuizsQuestions(String quizId) async {
-    final response = await http.get(Uri.parse(baseUrl + "quizes/${quizId}/questions"));
+    final response =
+        await http.get(Uri.parse(baseUrl + "quizes/${quizId}/questions"));
     if (response.statusCode == 200) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       Iterable iterable = json.decode(response.body);
-      List<Question> questions= List<Question>.from(iterable.map((model)=> Question.fromJson(model)));
+      List<Question> questions = List<Question>.from(
+          iterable.map((model) => Question.fromJson(model)));
       return await questions;
     } else {
       // If the server did not return a 201 CREATED response,
@@ -104,12 +107,14 @@ class MainRepositoryImp {
   }
 
   Future<List<Answer>>? getQuestionsAnswers(String questionId) async {
-    final response = await http.get(Uri.parse(baseUrl + "questions/${questionId}/answers"));
+    final response =
+        await http.get(Uri.parse(baseUrl + "questions/${questionId}/answers"));
     if (response.statusCode == 200) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       Iterable iterable = json.decode(response.body);
-      List<Answer> answers= List<Answer>.from(iterable.map((model)=> Answer.fromJson(model)));
+      List<Answer> answers =
+          List<Answer>.from(iterable.map((model) => Answer.fromJson(model)));
       return await answers;
     } else {
       // If the server did not return a 201 CREATED response,
@@ -118,10 +123,6 @@ class MainRepositoryImp {
     }
   }
 
-  
- 
-
-  
   Future<List<Quiz>> getTeachersQuizzes({required String teacherId}) async {
     final response =
         await http.get(Uri.parse(baseUrl + "teachers/${teacherId}/quizes"));
@@ -130,7 +131,8 @@ class MainRepositoryImp {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       Iterable iterable = json.decode(response.body);
-      List<Quiz> quizzes= List<Quiz>.from(iterable.map((model)=> Quiz.fromJson(model)));
+      List<Quiz> quizzes =
+          List<Quiz>.from(iterable.map((model) => Quiz.fromJson(model)));
       return await quizzes;
     } else {
       // If the server did not return a 201 CREATED response,
@@ -139,7 +141,6 @@ class MainRepositoryImp {
     }
   }
 
-  
   Future<List<Student>> getQuizsStudents({required String quizId}) async {
     final response =
         await http.get(Uri.parse(baseUrl + "quizes/${quizId}/students"));
@@ -148,7 +149,8 @@ class MainRepositoryImp {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       Iterable iterable = json.decode(response.body);
-      List<Student> students= List<Student>.from(iterable.map((model)=> Student.fromJson(model)));
+      List<Student> students =
+          List<Student>.from(iterable.map((model) => Student.fromJson(model)));
       return await students;
     } else {
       // If the server did not return a 201 CREATED response,

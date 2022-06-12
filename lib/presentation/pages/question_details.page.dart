@@ -33,9 +33,9 @@ class QuestionDetails extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                     // TODO: state quizes to listview
-                    itemCount: state.answerList.length,
+                    itemCount: 10,//state.answerList.length,
                     itemBuilder: ((context, index) {
-                    return AnswersListItem(answer: state.answerList[index]);
+                    return AnswersListItem(answer: state.answerList[0]);
                   })),
                 ),
               ],

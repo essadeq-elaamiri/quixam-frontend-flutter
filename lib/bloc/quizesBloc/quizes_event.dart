@@ -22,8 +22,9 @@ class GetAllTeacherQuizesEvent extends QuizesEvent{
 }
 
 class SaveQuizEvent extends QuizesEvent{
+  String teacherId;
   Quiz quiz;
-  SaveQuizEvent({required this.quiz});
+  SaveQuizEvent({required this.quiz, required this.teacherId});
 }
 
 class UpdateQuizEvent extends QuizesEvent{

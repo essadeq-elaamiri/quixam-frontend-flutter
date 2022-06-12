@@ -37,9 +37,9 @@ class StudentsList extends StatelessWidget{
                 Expanded(
                   child: ListView.builder(
                     // TODO: state quizes to listview
-                    itemCount: state.studentList.length,
+                    itemCount: 10,//state.studentList.length,
                     itemBuilder: ((context, index) {
-                    return StudentsListItem(student: state.studentList[index]);
+                    return StudentsListItem(student: state.studentList[0]);
                   })),
                 ),
               ],

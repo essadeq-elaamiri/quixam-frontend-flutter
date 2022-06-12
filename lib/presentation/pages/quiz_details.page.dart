@@ -51,11 +51,13 @@ class QuizDetails extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            print("Flutting nt ");
+            Navigator.pushNamed(context, "/AddQuestionForm", arguments: {
+                    'quiz': quiz,
+                  });
            
           },
           hoverColor: Colors.orange,
-          child: Icon(Icons.plus_one)),
+          child: Icon(Icons.add)),
     );
   }
 }

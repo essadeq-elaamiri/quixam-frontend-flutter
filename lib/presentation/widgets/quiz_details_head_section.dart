@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quixam_frontend_flutter/bloc/studentsBloc/students_bloc.dart';
 import 'package:quixam_frontend_flutter/entities/quiz.dart';
 
 class QuizDetailsInfo extends StatelessWidget {
@@ -102,7 +104,11 @@ class QuizDetailsInfo extends StatelessWidget {
                     ),
                   ),
                   IconButton(onPressed: () {
-                
+                  //BlocProvider.of<StudentsBloc>(context).add();
+
+                  Navigator.pushNamed(context, "/StudentsList", arguments: {
+                    'quiz': quiz,
+                  });
               }, icon: Icon(Icons.list)),
                 ],
               ),

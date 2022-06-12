@@ -5,10 +5,13 @@ import 'package:quixam_frontend_flutter/bloc/questionsBloc/questions_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/studentsBloc/students_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/teachersBloc/teachers_bloc.dart';
+import 'package:quixam_frontend_flutter/presentation/pages/addquestion.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/addquiz.page.dart';
+import 'package:quixam_frontend_flutter/presentation/pages/login.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/question_details.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quiz_details.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quizeslist.page.dart';
+import 'package:quixam_frontend_flutter/presentation/pages/students_list.page.dart';
 import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
 
 void main() {
@@ -64,6 +67,9 @@ class MyApp extends StatelessWidget {
             "/QuizDetails": (context) => QuizDetails(),
             "/QuestionDetails": (context) => QuestionDetails(),
             "/AddQuizForm":(context) => AddQuizForm(),
+            "/LoginPage":(context) => LoginPage(),
+            "/StudentsList":(context) => StudentsList(),
+            "/AddQuestionForm": (context) =>AddQuestionForm(),
           },
           initialRoute: "/QuizesList",
         ));

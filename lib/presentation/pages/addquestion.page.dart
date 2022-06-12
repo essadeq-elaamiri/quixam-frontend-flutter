@@ -44,7 +44,7 @@ class AddQuestionForm extends StatelessWidget {
                       child: Icon(
                         Icons.question_mark,
                         color: Color.fromRGBO(245, 0, 87, 1),
-                        size: 55,
+                        size: 200,
                       )),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 125),

@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:quixam_frontend_flutter/entities/question.dart';
 import 'package:quixam_frontend_flutter/entities/quiz.dart';
 
-class AddStudentForm extends StatelessWidget {
-  final Color preferColor = Color.fromRGBO(0, 191, 166, 1);
+class AddAnswerForm extends StatelessWidget {
+  final Color preferColor = Color.fromRGBO(249, 168, 38, 1);
   @override
   Widget build(BuildContext context) {
+    String dropdownValue = 'One';
     // access routing sent arguments
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
-    Quiz quiz = arguments['quiz'];
+    Question question = arguments['question'];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Add Student to quiz',
+          'Add Answer to question',
           style: TextStyle(
             fontFamily: 'Poppins',
             color: Colors.white,
@@ -50,14 +52,14 @@ class AddStudentForm extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          "Add a student",
+                          "Add Answer",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 45,
                           ),
                         ),
                         Text(
-                          "to '${quiz.title!}' quiz.",
+                          "for '${question.content!}' question.",
                           style: TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 25,
@@ -73,7 +75,7 @@ class AddStudentForm extends StatelessWidget {
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
-                        hintText: 'Last name',
+                        hintText: 'Answer proposition',
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: preferColor,
@@ -94,36 +96,27 @@ class AddStudentForm extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 22),
-                    child: TextFormField(
-                      controller: null,
-                      autofocus: true,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'First name',
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: preferColor,
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: preferColor,
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                        suffixIcon: null,
+                    child: DropdownButton<String>(
+                      value: dropdownValue,
+                      icon: const Icon(Icons.arrow_downward),
+                      elevation: 16,
+                      style: const TextStyle(color: Colors.deepPurple),
+                      underline: Container(
+                        height: 2,
+                        color: preferColor,
                       ),
-                      style: null,
-                      textAlign: TextAlign.center,
+                      onChanged: (String? newValue) {},
+                      items: <String>['One', 'Two', 'Free', 'Four']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
                     ),
                   ),
-
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 22),
                     child: TextFormField(
@@ -131,7 +124,7 @@ class AddStudentForm extends StatelessWidget {
                         if (value == null || value.isEmpty) {
                           return 'Please enter email.';
                         }
-                        if(value.length < 5 ){
+                        if (value.length < 5) {
                           return "Please enter a valid email (> 5 chars).";
                         }
                         return null;
@@ -161,7 +154,6 @@ class AddStudentForm extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

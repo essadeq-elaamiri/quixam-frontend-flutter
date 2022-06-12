@@ -5,6 +5,7 @@ import 'package:quixam_frontend_flutter/bloc/questionsBloc/questions_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/studentsBloc/students_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/teachersBloc/teachers_bloc.dart';
+import 'package:quixam_frontend_flutter/presentation/pages/add_answer.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/add_student.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/addquestion.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/addquiz.page.dart';
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
             "/StudentsList":(context) => StudentsList(),
             "/AddQuestionForm": (context) =>AddQuestionForm(),
             "/AddStudentForm":(context) => AddStudentForm(),
+            "/AddAnswerForm": (context) => AddAnswerForm(),
           },
           initialRoute: "/QuizesList",
         ));

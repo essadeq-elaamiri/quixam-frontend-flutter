@@ -62,7 +62,7 @@ class StudentsListItem extends StatelessWidget {
             ),
             IconButton(
                 onPressed: () {
-                  //print(question.content!);
+                  print(student.iId);
                   // sending to answers list
                   //BlocProvider.of<QuestionsBloc>(context).add(GetQuizQuestionsEvent(quizId: quiz.iId));
                   

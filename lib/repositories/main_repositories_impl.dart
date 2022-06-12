@@ -9,52 +9,42 @@ import 'package:quixam_frontend_flutter/entities/teacher.dart';
 import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
 import 'package:http/http.dart' as http;
 
-class MainRepositoryImp implements MainRepository{
+class MainRepositoryImp implements MainRepository {
   final String baseUrl = "http://localhost:8000/api/";
 
   // lets concider that this is teachers login
-  String jsonTeacher = '{"_id": "62718bf3fc6495a9942d2a59","firstname": "sslma", "lastname": "test","email": "loubna@gmail.com", "password": "password","createdAt": "2022-05-03T20:09:23.269Z","updatedAt": "2022-05-04T14:34:00.982Z", "__v": 0,"quizes": ["62725c788e92aab06719995d"]}';
-  final st = """{
-  "_id": {
-    "oid": "627254d7aa35d36c5c1b2b83"
-  },
-  "firstname": "ali",
-  "lastname": "asma",
+  final jsonTeacher = """
+{
+  
+  "_id": "62718c06fc6495a9942d2a61",
+  "firstname": "ali2",
+  "lastname": "ahmed",
   "email": "loubna@gmail.com",
   "password": "password",
-  "createdAt": {
-    "date": "2022-05-04T10:26:31.678Z"
-  },
-  "updatedAt": {
-    "date": "2022-05-04T14:25:38.200Z"
-  },
-  "__v": 0,
-  "quizes": [
-    {
-      "oid": "62725c788e92aab06719995d"
-    }
-  ]
-}""";
+  "createdAt": "2022-05-03T20:09:42.620Z",
+  "updatedAt": "2022-05-03T20:09:42.620Z",
+  "__v": 0
+}
+""";
 
   @override
   Teacher? login(String email, String password) {
-    Teacher teacher = Teacher.fromJson(json.decode(st) as Map<String, dynamic>);
+    Teacher teacher =
+        Teacher.fromJson(json.decode(jsonTeacher) as Map<String, dynamic>);
     //print(json.decode(jsonTeacher));
-    return teacher;//Teacher(iId: Id(oid: "62718bf3fc6495a9942d2a59"));
+    return teacher; //Teacher(iId: Id(oid: "62718bf3fc6495a9942d2a59"));
   }
 
   @override
   void addQuestionsAnswer(Answer answer) {
     // TODO: implement addQuestionsAnswer
-    http.post(
-    Uri.parse(baseUrl+"answers/"),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: answer.toJson()
-  ).then((value) => {
-    print(value)
-  });
+    http
+        .post(Uri.parse(baseUrl + "answers/"),
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: answer.toJson())
+        .then((value) => {print(value)});
   }
 
   @override
@@ -112,16 +102,16 @@ class MainRepositoryImp implements MainRepository{
 
   @override
   Future<List<Quiz>>? getTeachersQuizzes(Id teacherId) async {
-    final response = await http.get(Uri.parse(baseUrl+"teachers/${teacherId}/quizes"));
+    final response =
+        await http.get(Uri.parse(baseUrl + "teachers/${teacherId}/quizes"));
     if (response.statusCode == 200) {
-    // If the server did return a 201 CREATED response,
-    // then parse the JSON.
-    return jsonDecode(response.body) ;
-  } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-    throw Exception('Failed to create album.');
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      return jsonDecode(response.body);
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to create album.');
+    }
   }
-  }
-  
 }

@@ -1,24 +1,22 @@
-import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
-
 class Answer {
-  Id? _id;
+  String? _sId;
   String? _content;
   bool? _isTrue;
-  CreatedAt? _createdAt;
-  CreatedAt? _updatedAt;
+  String? _createdAt;
+  String? _updatedAt;
   int? _iV;
-  Id? _question;
+  String? _question;
 
   Answer(
-      {Id? id,
+      {String? sId,
       String? content,
       bool? isTrue,
-      CreatedAt? createdAt,
-      CreatedAt? updatedAt,
+      String? createdAt,
+      String? updatedAt,
       int? iV,
-      Id? question}) {
-    if (id != null) {
-      this._id = id;
+      String? question}) {
+    if (sId != null) {
+      this._sId = sId;
     }
     if (content != null) {
       this._content = content;
@@ -40,53 +38,40 @@ class Answer {
     }
   }
 
-  Id? get id => _id;
-  set id(Id? id) => _id = id;
+  String? get sId => _sId;
+  set sId(String? sId) => _sId = sId;
   String? get content => _content;
   set content(String? content) => _content = content;
   bool? get isTrue => _isTrue;
   set isTrue(bool? isTrue) => _isTrue = isTrue;
-  CreatedAt? get createdAt => _createdAt;
-  set createdAt(CreatedAt? createdAt) => _createdAt = createdAt;
-  CreatedAt? get updatedAt => _updatedAt;
-  set updatedAt(CreatedAt? updatedAt) => _updatedAt = updatedAt;
+  String? get createdAt => _createdAt;
+  set createdAt(String? createdAt) => _createdAt = createdAt;
+  String? get updatedAt => _updatedAt;
+  set updatedAt(String? updatedAt) => _updatedAt = updatedAt;
   int? get iV => _iV;
   set iV(int? iV) => _iV = iV;
-  Id? get question => _question;
-  set question(Id? question) => _question = question;
+  String? get question => _question;
+  set question(String? question) => _question = question;
 
   Answer.fromJson(Map<String, dynamic> json) {
-    _id = json['id'] != null ? new Id.fromJson(json['id']) : null;
+    _sId = json['_id'];
     _content = json['content'];
     _isTrue = json['isTrue'];
-    _createdAt = json['createdAt'] != null
-        ? new CreatedAt.fromJson(json['createdAt'])
-        : null;
-    _updatedAt = json['updatedAt'] != null
-        ? new CreatedAt.fromJson(json['updatedAt'])
-        : null;
+    _createdAt = json['createdAt'];
+    _updatedAt = json['updatedAt'];
     _iV = json['__v'];
-    _question =
-        json['question'] != null ? new Id.fromJson(json['question']) : null;
+    _question = json['question'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this._id != null) {
-      data['id'] = this._id!.toJson();
-    }
+    data['_id'] = this._sId;
     data['content'] = this._content;
     data['isTrue'] = this._isTrue;
-    if (this._createdAt != null) {
-      data['createdAt'] = this._createdAt!.toJson();
-    }
-    if (this._updatedAt != null) {
-      data['updatedAt'] = this._updatedAt!.toJson();
-    }
+    data['createdAt'] = this._createdAt;
+    data['updatedAt'] = this._updatedAt;
     data['__v'] = this._iV;
-    if (this._question != null) {
-      data['question'] = this._question!.toJson();
-    }
+    data['question'] = this._question;
     return data;
   }
 }

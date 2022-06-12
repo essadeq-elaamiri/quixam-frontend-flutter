@@ -1,29 +1,26 @@
-import 'package:quixam_frontend_flutter/entities/answer.dart';
-import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
-
 class Question {
-  Id? _iId;
+  String? _sId;
   String? _content;
   int? _score;
   int? _duration;
-  CreatedAt? _createdAt;
-  CreatedAt? _updatedAt;
+  String? _createdAt;
+  String? _updatedAt;
   int? _iV;
-  Id? _quiz;
-  List<Answer>? _answers;
+  String? _quiz;
+  List<String>? _answers;
 
   Question(
-      {Id? iId,
+      {String? sId,
       String? content,
       int? score,
       int? duration,
-      CreatedAt? createdAt,
-      CreatedAt? updatedAt,
+      String? createdAt,
+      String? updatedAt,
       int? iV,
-      Id? quiz,
-      List<Answer>? answers}) {
-    if (iId != null) {
-      this._iId = iId;
+      String? quiz,
+      List<String>? answers}) {
+    if (sId != null) {
+      this._sId = sId;
     }
     if (content != null) {
       this._content = content;
@@ -51,72 +48,48 @@ class Question {
     }
   }
 
-  Id? get iId => _iId;
-  set iId(Id? iId) => _iId = iId;
+  String? get sId => _sId;
+  set sId(String? sId) => _sId = sId;
   String? get content => _content;
   set content(String? content) => _content = content;
   int? get score => _score;
   set score(int? score) => _score = score;
   int? get duration => _duration;
   set duration(int? duration) => _duration = duration;
-  CreatedAt? get createdAt => _createdAt;
-  set createdAt(CreatedAt? createdAt) => _createdAt = createdAt;
-  CreatedAt? get updatedAt => _updatedAt;
-  set updatedAt(CreatedAt? updatedAt) => _updatedAt = updatedAt;
+  String? get createdAt => _createdAt;
+  set createdAt(String? createdAt) => _createdAt = createdAt;
+  String? get updatedAt => _updatedAt;
+  set updatedAt(String? updatedAt) => _updatedAt = updatedAt;
   int? get iV => _iV;
   set iV(int? iV) => _iV = iV;
-  Id? get quiz => _quiz;
-  set quiz(Id? quiz) => _quiz = quiz;
-  List<Answer>? get answers => _answers;
-  set answers(List<Answer>? answers) => _answers = answers;
+  String? get quiz => _quiz;
+  set quiz(String? quiz) => _quiz = quiz;
+  List<String>? get answers => _answers;
+  set answers(List<String>? answers) => _answers = answers;
 
   Question.fromJson(Map<String, dynamic> json) {
-    _iId = json['_id'] != null ? new Id.fromJson(json['_id']) : null;
+    _sId = json['_id'];
     _content = json['content'];
     _score = json['score'];
     _duration = json['duration'];
-    _createdAt = json['createdAt'] != null
-        ? new CreatedAt.fromJson(json['createdAt'])
-        : null;
-    _updatedAt = json['updatedAt'] != null
-        ? new CreatedAt.fromJson(json['updatedAt'])
-        : null;
+    _createdAt = json['createdAt'];
+    _updatedAt = json['updatedAt'];
     _iV = json['__v'];
-    _quiz = json['quiz'] != null ? new Id.fromJson(json['quiz']) : null;
-    if (json['answers'] != null) {
-      _answers = <Answer>[];
-      json['answers'].forEach((v) {
-        _answers!.add(new Answer.fromJson(v));
-      });
-    }
+    _quiz = json['quiz'];
+    _answers = json['answers'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this._iId != null) {
-      data['_id'] = this._iId!.toJson();
-    }
+    data['_id'] = this._sId;
     data['content'] = this._content;
     data['score'] = this._score;
     data['duration'] = this._duration;
-    if (this._createdAt != null) {
-      data['createdAt'] = this._createdAt!.toJson();
-    }
-    if (this._updatedAt != null) {
-      data['updatedAt'] = this._updatedAt!.toJson();
-    }
+    data['createdAt'] = this._createdAt;
+    data['updatedAt'] = this._updatedAt;
     data['__v'] = this._iV;
-    if (this._quiz != null) {
-      data['quiz'] = this._quiz!.toJson();
-    }
-    if (this._answers != null) {
-      data['answers'] = this._answers!.map((v) => v.toJson()).toList();
-    }
+    data['quiz'] = this._quiz;
+    data['answers'] = this._answers;
     return data;
   }
 }
-
-
-
-
-

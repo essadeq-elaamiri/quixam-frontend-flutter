@@ -67,7 +67,7 @@ class StudentsList extends StatelessWidget{
           onPressed: () {
             print("Flutting");
              // AddQuizForm
-            Navigator.pushNamed(context, "/AddQuizForm");
+            Navigator.pushNamed(context, "/AddStudentForm", arguments: {"quiz", quiz});
           },
           hoverColor: Colors.orange,
           child: Icon(Icons.add)),

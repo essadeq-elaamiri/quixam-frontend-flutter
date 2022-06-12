@@ -43,7 +43,7 @@ class AddQuestionForm extends StatelessWidget {
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 125),
                       child: Icon(
                         Icons.question_mark,
-                        color: Colors.purple,
+                        color: Color.fromRGBO(245, 0, 87, 1),
                         size: 55,
                       )),
                   Padding(
@@ -86,14 +86,14 @@ class AddQuestionForm extends StatelessWidget {
                         hintText: 'Question ?',
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.purple,
+                            color: Color.fromRGBO(245, 0, 87, 1),
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(7),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.purple,
+                            color: Color.fromRGBO(245, 0, 87, 1),
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(7),
@@ -123,14 +123,14 @@ class AddQuestionForm extends StatelessWidget {
                         hintText: 'Score',
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.purple,
+                            color: Color.fromRGBO(245, 0, 87, 1),
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(7),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.purple,
+                            color: Color.fromRGBO(245, 0, 87, 1),
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(7),
@@ -160,14 +160,14 @@ class AddQuestionForm extends StatelessWidget {
                         hintText: 'Duration',
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.purple,
+                            color: Color.fromRGBO(245, 0, 87, 1),
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(7),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.purple,
+                            color: Color.fromRGBO(245, 0, 87, 1),
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(7),
@@ -200,7 +200,7 @@ class AddQuestionForm extends StatelessWidget {
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.purple,
+                            primary: Color.fromRGBO(245, 0, 87, 1),
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 50, vertical: 20),
                             textStyle: const TextStyle(

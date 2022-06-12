@@ -28,8 +28,13 @@ class QuizDetails extends StatelessWidget {
           return Padding(
             child: Column(
               children: [
-                Card(
-                  child: QuizDetailsInfo(quiz: quiz),
+                Padding(
+                  padding: EdgeInsetsDirectional.only(bottom: 20),
+                  child: Card(
+                    
+                    color: Color.fromRGBO(245, 0, 87, 1),
+                    child: QuizDetailsInfo(quiz: quiz),
+                  ),
                 ),
                 Expanded(
                   child: ListView.builder(
@@ -57,6 +62,7 @@ class QuizDetails extends StatelessWidget {
            
           },
           hoverColor: Colors.orange,
+          backgroundColor: Color.fromRGBO(245, 0, 87, 1),
           child: Icon(Icons.add)),
     );
   }

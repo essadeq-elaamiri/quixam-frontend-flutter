@@ -4,6 +4,7 @@ import 'package:quixam_frontend_flutter/bloc/answersBloc/answers_bloc.dart';
 import 'package:quixam_frontend_flutter/entities/answer.dart';
 import 'package:quixam_frontend_flutter/entities/question.dart';
 import 'package:quixam_frontend_flutter/presentation/widgets/answers_list_item.dart';
+import 'package:quixam_frontend_flutter/presentation/widgets/question_details_header_section.dart';
 
 class QuestionDetails extends StatelessWidget {
   const QuestionDetails({Key? key}) : super(key: key);
@@ -23,6 +24,9 @@ class QuestionDetails extends StatelessWidget {
           return Padding(
             child: Column(
               children: [
+                Card(
+                  color: Colors.purple,
+                  child: QuestionDetailsInfo(question: question),),
                 Expanded(
                   child: ListView.builder(
                     // TODO: state quizes to listview

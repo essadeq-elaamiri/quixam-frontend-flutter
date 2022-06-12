@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
+import 'package:quixam_frontend_flutter/bloc/teachersBloc/teachers_bloc.dart';
 import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
 import 'package:quixam_frontend_flutter/entities/quiz.dart';
+import 'package:quixam_frontend_flutter/entities/teacher.dart';
 import 'package:quixam_frontend_flutter/presentation/widgets/quiz_list_item.dart';
+import 'package:quixam_frontend_flutter/repositories/main_repositories_impl.dart';
 
 class QuizesList extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    //BlocProvider.of<TeachersBloc>(context).add(LogInTeacherEvent(email: "email", password: "password"));
+    Teacher teacher = (MainRepositoryImp()).login("email", "password")!;
+    BlocProvider.of<QuizesBloc>(context).add(GetAllTeacherQuizesEvent(teacher:  teacher));
     return Scaffold(
       appBar: AppBar(
           title: Text('Quizes list'),
@@ -21,9 +27,11 @@ class QuizesList extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                     // TODO: state quizes to listview
-                    itemCount: 10,
+                    itemCount: state.quizList.length,
                     itemBuilder: ((context, index) {
-                    return QuizesListItem(quiz: Quiz(title: "hello", createdAt: CreatedAt(date: "2014-05-19"), questions:  [], students: []),);
+                    
+                    //return QuizesListItem(quiz: Quiz(title: "hello", createdAt: CreatedAt(date: "2014-05-19"), questions:  [], students: []),);
+                    return QuizesListItem(quiz: state.quizList[index]);
                   })),
                 ),
               ],

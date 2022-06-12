@@ -13,5 +13,12 @@ class TeachersBloc extends Bloc<TeachersEvent, TeachersState> {
     on<TeachersEvent>((event, emit) {
       // TODO: implement event handler
     });
+
+     on<LogInTeacherEvent>((event, emit) {
+
+      Teacher teacher = mainRepository.login(event.email, event.password)!;
+      emit(TeachersState(teacher: teacher, requestState: RequestState.loaded));
+
+    });
   }
 }

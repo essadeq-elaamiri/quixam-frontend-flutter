@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
             create: (context) => TeachersBloc(
                 mainRepository: mainRepository,
                 teachersState: TeachersState(
-                    teacherList: [], requestState: RequestState.none)),
+                    teacher: null, requestState: RequestState.none)),
           ),
           BlocProvider(
             create: (context) => StudentsBloc(

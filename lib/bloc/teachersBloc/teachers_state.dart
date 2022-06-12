@@ -3,15 +3,15 @@ part of 'teachers_bloc.dart';
 
 @immutable
 class TeachersState {
-   List<Teacher> teacherList;
+  Teacher? teacher;
   RequestState requestState;
   TeachersEvent? lastEvent;
   String? erroMessage;
   TeachersState(
-      {required this.teacherList,
+      { this.teacher,
       required this.requestState,
        this.lastEvent,
       this.erroMessage});
   @override
-  List<Object> get props => [teacherList, requestState, erroMessage ?? ""];
+  List<Object?> get props => [teacher, requestState, erroMessage ?? ""];
 }

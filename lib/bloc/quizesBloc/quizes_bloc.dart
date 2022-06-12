@@ -22,9 +22,7 @@ class QuizesBloc extends Bloc<QuizesEvent, QuizesState> {
       emit(QuizesState(quizList: quizzes, requestState: RequestState.loaded));
 
     });
-    on<GetOneQuizEvent>((event, emit) => {
-
-    });
+   
     on<SaveQuizEvent>((event, emit) => {
 
     });

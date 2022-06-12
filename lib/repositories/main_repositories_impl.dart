@@ -32,7 +32,7 @@ class MainRepositoryImp implements MainRepository{
 
   @override
   Teacher? login(String email, String password) {
-    Teacher.fromJson(json.decode(jsonTeacher));
+    return Teacher.fromJson(json.decode(jsonTeacher) as Map<String, dynamic>);
   }
 
   @override

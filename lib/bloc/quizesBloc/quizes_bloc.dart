@@ -26,14 +26,15 @@ class QuizesBloc extends Bloc<QuizesEvent, QuizesState> {
 
     });
 
+  /*
     on<GetAllStudentQuizesEvent>((event, emit) async {
        final id = event.studentId;
-       List<Quiz> quizzes = await mainRepository.getStudentsQuizzes( studentId: id);
+       //List<Quiz> quizzes = await mainRepository.getStudentsQuizzes( studentId: id);
        print(quizzes);
       emit(QuizesState(quizList: quizzes, requestState: RequestState.loaded));
 
     });
-
+*/
     //
  
     on<SaveQuizEvent>((event, emit) => {

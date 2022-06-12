@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quixam_frontend_flutter/bloc/questionsBloc/questions_bloc.dart';
 import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
+import 'package:quixam_frontend_flutter/bloc/studentsBloc/students_bloc.dart';
 import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
 import 'package:quixam_frontend_flutter/entities/quiz.dart';
 import 'package:quixam_frontend_flutter/entities/student.dart';
@@ -10,27 +12,7 @@ import 'package:quixam_frontend_flutter/presentation/widgets/quiz_list_item.dart
 import 'package:quixam_frontend_flutter/presentation/widgets/students_list_item.dart';
 
 class StudentsList extends StatelessWidget{
-  final st = """{
-  "_id": {
-    "oid": "627254d7aa35d36c5c1b2b83"
-  },
-  "firstname": "ali",
-  "lastname": "asma",
-  "email": "loubna@gmail.com",
-  "password": "password",
-  "createdAt": {
-    "date": "2022-05-04T10:26:31.678Z"
-  },
-  "updatedAt": {
-    "date": "2022-05-04T14:25:38.200Z"
-  },
-  "__v": 0,
-  "quizes": [
-    {
-      "oid": "62725c788e92aab06719995d"
-    }
-  ]
-}""";
+ 
   
 
 
@@ -40,11 +22,14 @@ class StudentsList extends StatelessWidget{
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     Quiz quiz = arguments['quiz'];
+    
+    BlocProvider.of<StudentsBloc>(context).add(GetQuizsStudentsEvent(quizId: quiz.sId!));
+
     return Scaffold(
       appBar: AppBar(
           title: Text('Students list'),
           backgroundColor: Theme.of(context).appBarTheme.backgroundColor),
-      body: BlocBuilder<QuizesBloc, QuizesState>(
+      body: BlocBuilder<StudentsBloc, StudentsState>(
         builder: (context, state) {
           return Padding(
             child: Column(
@@ -52,9 +37,9 @@ class StudentsList extends StatelessWidget{
                 Expanded(
                   child: ListView.builder(
                     // TODO: state quizes to listview
-                    itemCount: 10,
+                    itemCount: state.studentList.length,
                     itemBuilder: ((context, index) {
-                    return StudentsListItem(student: Student.fromJson(json.decode(st)),);
+                    return StudentsListItem(student: state.studentList[index]);
                   })),
                 ),
               ],

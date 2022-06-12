@@ -17,7 +17,8 @@ class AnswersBloc extends Bloc<AnswersEvent, AnswersState> {
 
     on<GetQuestionsAnswers>((event, emit) async {
       final qId = event.questionId;
-      List<Answer>? answers = await mainRepository.getQuestionAnswers(qId);
+      List<Answer>? answers =  await  mainRepository.getQuestionsAnswers(qId);
+      print(answers);
       emit(AnswersState(answerList: answers!, requestState: RequestState.loaded));
     });
   }

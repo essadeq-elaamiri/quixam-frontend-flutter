@@ -14,6 +14,7 @@ class QuestionDetails extends StatelessWidget {
     // access routing sent arguments 
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
     Question question = arguments['question'];
+    print(question.content);
     BlocProvider.of<AnswersBloc>(context).add(GetQuestionsAnswers(questionId: question.sId!));
 
     //print(arguments);
@@ -32,9 +33,9 @@ class QuestionDetails extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                     // TODO: state quizes to listview
-                    itemCount: 10,
+                    itemCount: state.answerList.length,
                     itemBuilder: ((context, index) {
-                    return AnswersListItem(answer: Answer(content: "Answer content", isTrue: false));
+                    return AnswersListItem(answer: state.answerList[index]);
                   })),
                 ),
               ],

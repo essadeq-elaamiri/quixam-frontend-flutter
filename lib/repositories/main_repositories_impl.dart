@@ -85,10 +85,7 @@ class MainRepositoryImp {
   }
 
   
-  Future<List<Answer>>? getQuestionAnswers(String questionId) {
-    // TODO: implement getQuestionAnswers
-    throw UnimplementedError();
-  }
+
 
   
   Future<List<Question>>? getQuizsQuestions(String quizId) async {
@@ -112,7 +109,7 @@ class MainRepositoryImp {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       Iterable iterable = json.decode(response.body);
-      List<Answer> answers= List<Answer>.from(iterable.map((model)=> Question.fromJson(model)));
+      List<Answer> answers= List<Answer>.from(iterable.map((model)=> Answer.fromJson(model)));
       return await answers;
     } else {
       // If the server did not return a 201 CREATED response,
@@ -122,10 +119,7 @@ class MainRepositoryImp {
   }
 
   
-  Future<List<Student>>? getQuizsStudents(String quizId) {
-    // TODO: implement getQuizsStudents
-    throw UnimplementedError();
-  }
+ 
 
   
   Future<List<Quiz>> getTeachersQuizzes({required String teacherId}) async {
@@ -146,16 +140,16 @@ class MainRepositoryImp {
   }
 
   
-  Future<List<Quiz>> getStudentsQuizzes({required String studentId}) async {
+  Future<List<Student>> getQuizsStudents({required String quizId}) async {
     final response =
-        await http.get(Uri.parse(baseUrl + "students/${studentId}/quizes"));
+        await http.get(Uri.parse(baseUrl + "quizes/${quizId}/students"));
     //print(baseUrl + "teachers/${studentId}/quizes");
     if (response.statusCode == 200) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       Iterable iterable = json.decode(response.body);
-      List<Quiz> quizzes= List<Quiz>.from(iterable.map((model)=> Quiz.fromJson(model)));
-      return await quizzes;
+      List<Student> students= List<Student>.from(iterable.map((model)=> Student.fromJson(model)));
+      return await students;
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.

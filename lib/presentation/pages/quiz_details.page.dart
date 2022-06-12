@@ -20,6 +20,7 @@ class QuizDetails extends StatelessWidget {
         <String, dynamic>{}) as Map;
     Quiz quiz = arguments['quiz'];
      BlocProvider.of<QuestionsBloc>(context).add(GetQuizQuestionsEvent(quizId: quiz.sId));
+
     //print(arguments);
     return Scaffold(
       appBar: AppBar(

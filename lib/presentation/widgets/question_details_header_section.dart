@@ -96,7 +96,7 @@ class QuestionDetailsInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
             children: [
               IconButton(onPressed: () {
-               print("deleting quiz ${question.iId!.oid}"); 
+               print("deleting quiz ${question.sId}"); 
               }, icon: Icon(Icons.delete, color: Colors.white,)),
             ],
           ),

@@ -49,7 +49,7 @@ class QuizesListItem extends StatelessWidget {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                   child: Text(
-                    quiz.createdAt!.date!,
+                    quiz.createdAt!,
                     style: TextStyle(
                       fontFamily: 'Outfit',
                       color: Colors.white,
@@ -64,7 +64,7 @@ class QuizesListItem extends StatelessWidget {
                 onPressed: () {
                   print(quiz.title!);
                   BlocProvider.of<QuestionsBloc>(context)
-                      .add(GetQuizQuestionsEvent(quizId: quiz.iId));
+                      .add(GetQuizQuestionsEvent(quizId: quiz.sId));
 
                   Navigator.pushNamed(context, "/QuizDetails", arguments: {
                     'quiz': quiz,

@@ -9,34 +9,34 @@ class  MainRepository{
   
 
 Teacher? login(String email, String password){}
-Future<List<Quiz>>? getTeachersQuizzes(Id teacherId){
+Future<List<Quiz>>? getTeachersQuizzes(String teacherId){
   return null;
 }
-void deleteTeachersQuiz(Id quizId){}
+void deleteTeachersQuiz(String quizId){}
 void addTeachersQuiz(Quiz quiz){}
 
 //__________
 
-Future<List<Question>>? getQuizsQuestions(Id quizId){
+Future<List<Question>>? getQuizsQuestions(String quizId){
   return null;
 }
-void deleteQuizsQuestion(Id questionId){}
+void deleteQuizsQuestion(String questionId){}
 void addQuizsQuestion(Question question){}
 
 //_____________
 
-Future<List<Student>>? getQuizsStudents(Id quizId){
+Future<List<Student>>? getQuizsStudents(String quizId){
   return null;
 }
-void deleteQuizsStudent(Id studentId){}
+void deleteQuizsStudent(String studentId){}
 void addQuizsStudent(Student student){}
 
 //_____________
 
-Future<List<Answer>>? getQuestionAnswers(Id questionId){
+Future<List<Answer>>? getQuestionAnswers(String questionId){
   return null;
 }
-void deleteQuestionsAnswer(Id answerId){}
+void deleteQuestionsAnswer(String answerId){}
 void addQuestionsAnswer(Answer answer){}
 
   

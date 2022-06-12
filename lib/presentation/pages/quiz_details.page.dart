@@ -43,7 +43,7 @@ class QuizDetails extends StatelessWidget {
                       itemBuilder: ((context, index) {
                         return QuestionsListItem(
                             question: Question(
-                                iId: Id(oid: '14225'),
+                                sId: "fddf",
                                 score: 154,
                                 content: "Content ?"));
                       })),

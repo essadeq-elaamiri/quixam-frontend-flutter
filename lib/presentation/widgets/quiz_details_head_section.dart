@@ -48,7 +48,7 @@ class QuizDetailsInfo extends StatelessWidget {
               ),
               
               Text(
-                quiz.createdAt!.date!,
+                quiz.createdAt!,
                 style: TextStyle(
                   fontFamily: 'Outfit',
                   color: Colors.white,

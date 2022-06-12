@@ -10,7 +10,7 @@ class GetOneQuestionEvent extends QuestionsEvent{
 }
 
 class GetQuizQuestionsEvent extends QuestionsEvent{
-  Id? quizId;
+  String? quizId;
   GetQuizQuestionsEvent({ this.quizId});
 }
 
@@ -20,7 +20,7 @@ class SaveQuestionEvent extends QuestionsEvent{
 }
 
 class UpdateQuestionEvent extends QuestionsEvent{
-  Id questionId;
+  String questionId;
   Question question;
   UpdateQuestionEvent({required this.questionId, required this.question});
 }

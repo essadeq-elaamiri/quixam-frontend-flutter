@@ -7,7 +7,7 @@ abstract class QuizesEvent {}
 class GetAllQuizesEvent extends QuizesEvent{}
 
 class GetOneQuizEvent extends QuizesEvent{
-  Id quizId;
+  String quizId;
   GetOneQuizEvent({required this.quizId});
 }
 
@@ -27,7 +27,7 @@ class SaveQuizEvent extends QuizesEvent{
 }
 
 class UpdateQuizEvent extends QuizesEvent{
-  Id quizId;
+  String quizId;
   Quiz quiz;
   UpdateQuizEvent({required this.quizId, required this.quiz});
 }

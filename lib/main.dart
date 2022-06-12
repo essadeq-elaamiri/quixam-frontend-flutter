@@ -22,7 +22,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  var mainRepository = MainRepositoryImp();
+  MainRepositoryImp mainRepository = MainRepositoryImp();
 
   // This widget is the root of your application.
   @override

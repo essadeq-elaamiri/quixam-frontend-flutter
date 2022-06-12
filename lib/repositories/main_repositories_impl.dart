@@ -9,33 +9,35 @@ import 'package:quixam_frontend_flutter/entities/teacher.dart';
 import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
 import 'package:http/http.dart' as http;
 
-class MainRepositoryImp implements MainRepository {
+class MainRepositoryImp {
   final String baseUrl = "http://localhost:8000/api/";
 
   // lets concider that this is teachers login
-  final jsonTeacher = """
+  final jsonTeacher = 
+"""
 {
-  
-  "_id": "62718c06fc6495a9942d2a61",
-  "firstname": "ali2",
-  "lastname": "ahmed",
-  "email": "loubna@gmail.com",
-  "password": "password",
-  "createdAt": "2022-05-03T20:09:42.620Z",
-  "updatedAt": "2022-05-03T20:09:42.620Z",
-  "__v": 0
-}
+            "_id": "62718bf3fc6495a9942d2a59",
+            "firstname": "sslma",
+            "lastname": "test",
+            "email": "loubna@gmail.com",
+            "password": "password",
+            "createdAt": "2022-05-03T20:09:23.269Z",
+            "updatedAt": "2022-05-04T14:34:00.982Z",
+            "__v": 0,
+            "quizes": [
+                "62725c788e92aab06719995d"
+            ]
+        }
 """;
 
-  @override
+  
   Teacher? login(String email, String password) {
-    Teacher teacher =
-        Teacher.fromJson(json.decode(jsonTeacher) as Map<String, dynamic>);
+    Teacher teacher = Teacher.fromJson(json.decode(jsonTeacher));
     //print(json.decode(jsonTeacher));
-    return teacher; //Teacher(iId: Id(oid: "62718bf3fc6495a9942d2a59"));
+    return teacher; //Teacher(iId: String(oid: "62718bf3fc6495a9942d2a59"));
   }
 
-  @override
+  
   void addQuestionsAnswer(Answer answer) {
     // TODO: implement addQuestionsAnswer
     http
@@ -47,61 +49,61 @@ class MainRepositoryImp implements MainRepository {
         .then((value) => {print(value)});
   }
 
-  @override
+  
   void addQuizsQuestion(Question question) {
     // TODO: implement addQuizsQuestion
   }
 
-  @override
+  
   void addQuizsStudent(Student student) {
     // TODO: implement addQuizsStudent
   }
 
-  @override
+  
   void addTeachersQuiz(Quiz quiz) {
     // TODO: implement addTeachersQuiz
   }
 
-  @override
-  void deleteQuestionsAnswer(Id answerId) {
+  
+  void deleteQuestionsAnswer(String answerId) {
     // TODO: implement deleteQuestionsAnswer
   }
 
-  @override
-  void deleteQuizsQuestion(Id questionId) {
+  
+  void deleteQuizsQuestion(String questionId) {
     // TODO: implement deleteQuizsQuestion
   }
 
-  @override
-  void deleteQuizsStudent(Id studentId) {
+  
+  void deleteQuizsStudent(String studentId) {
     // TODO: implement deleteQuizsStudent
   }
 
-  @override
-  void deleteTeachersQuiz(Id quizId) {
+  
+  void deleteTeachersQuiz(String quizId) {
     // TODO: implement deleteTeachersQuiz
   }
 
-  @override
-  Future<List<Answer>>? getQuestionAnswers(Id questionId) {
+  
+  Future<List<Answer>>? getQuestionAnswers(String questionId) {
     // TODO: implement getQuestionAnswers
     throw UnimplementedError();
   }
 
-  @override
-  Future<List<Question>>? getQuizsQuestions(Id quizId) {
+  
+  Future<List<Question>>? getQuizsQuestions(String quizId) {
     // TODO: implement getQuizsQuestions
     throw UnimplementedError();
   }
 
-  @override
-  Future<List<Student>>? getQuizsStudents(Id quizId) {
+  
+  Future<List<Student>>? getQuizsStudents(String quizId) {
     // TODO: implement getQuizsStudents
     throw UnimplementedError();
   }
 
-  @override
-  Future<List<Quiz>>? getTeachersQuizzes(Id teacherId) async {
+  
+  Future<List<Quiz>> getTeachersQuizzes({required String teacherId}) async {
     final response =
         await http.get(Uri.parse(baseUrl + "teachers/${teacherId}/quizes"));
     if (response.statusCode == 200) {

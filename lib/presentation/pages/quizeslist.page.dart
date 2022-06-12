@@ -14,6 +14,7 @@ class QuizesList extends StatelessWidget {
   Widget build(BuildContext context) {
     //BlocProvider.of<TeachersBloc>(context).add(LogInTeacherEvent(email: "email", password: "password"));
     Teacher teacher = (MainRepositoryImp()).login("email", "password")!;
+    print(teacher);
     BlocProvider.of<QuizesBloc>(context).add(GetAllTeacherQuizesEvent(teacher:  teacher));
     return Scaffold(
       appBar: AppBar(

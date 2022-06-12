@@ -14,6 +14,7 @@ import 'package:quixam_frontend_flutter/presentation/pages/question_details.page
 import 'package:quixam_frontend_flutter/presentation/pages/quiz_details.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/quizeslist.page.dart';
 import 'package:quixam_frontend_flutter/presentation/pages/students_list.page.dart';
+import 'package:quixam_frontend_flutter/repositories/main_repositories_impl.dart';
 import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
 
 void main() {
@@ -21,7 +22,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  var mainRepository = MainRepository();
+  var mainRepository = MainRepositoryImp();
 
   // This widget is the root of your application.
   @override

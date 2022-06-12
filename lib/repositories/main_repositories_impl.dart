@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:quixam_frontend_flutter/entities/student.dart';
 import 'package:quixam_frontend_flutter/entities/quiz.dart';
 import 'package:quixam_frontend_flutter/entities/question.dart';
@@ -8,9 +10,11 @@ import 'package:quixam_frontend_flutter/repositories/main_repository.dart';
 import 'package:http/http.dart' as http;
 
 class MainRepositoryImp implements MainRepository{
+  final String baseUrl = "http://localhost:8000/api/";
+
   // lets concider that this is teachers login
-  String logedinTeacher = """
-{
+  final jsonTeacher = """
+      {
             "_id": "62718bf3fc6495a9942d2a59",
             "firstname": "sslma",
             "lastname": "test",
@@ -25,15 +29,24 @@ class MainRepositoryImp implements MainRepository{
         }
 """;
 
+
   @override
   Teacher? login(String email, String password) {
-    // TODO: implement login
-    throw UnimplementedError();
+    Teacher.fromJson(json.decode(jsonTeacher));
   }
 
   @override
   void addQuestionsAnswer(Answer answer) {
     // TODO: implement addQuestionsAnswer
+    http.post(
+    Uri.parse(baseUrl+"answers/"),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: answer.toJson()
+  ).then((value) => {
+    print(value)
+  });
   }
 
   @override
@@ -90,9 +103,17 @@ class MainRepositoryImp implements MainRepository{
   }
 
   @override
-  Future<List<Quiz>>? getTeachersQuizzes(Id teacherId) {
-    // TODO: implement getTeachersQuizzes
-    throw UnimplementedError();
+  Future<List<Quiz>>? getTeachersQuizzes(Id teacherId) async {
+    final response = await http.get(Uri.parse(baseUrl+"teachers/${teacherId}/quizes"));
+    if (response.statusCode == 200) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    return jsonDecode(response.body) ;
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    throw Exception('Failed to create album.');
+  }
   }
   
 }

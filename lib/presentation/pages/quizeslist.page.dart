@@ -5,14 +5,7 @@ import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
 import 'package:quixam_frontend_flutter/entities/quiz.dart';
 import 'package:quixam_frontend_flutter/presentation/widgets/quiz_list_item.dart';
 
-class QuizesList extends StatefulWidget {
-  const QuizesList({Key? key}) : super(key: key);
-
-  @override
-  State<QuizesList> createState() => _QuizesListState();
-}
-
-class _QuizesListState extends State<QuizesList> {
+class QuizesList extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {

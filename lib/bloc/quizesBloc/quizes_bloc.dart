@@ -16,9 +16,10 @@ class QuizesBloc extends Bloc<QuizesEvent, QuizesState> {
       print(event);
     });
 
-    on<GetAllTeacherQuizesEvent>((event, emit) {
+    on<GetAllTeacherQuizesEvent>((event, emit) async {
        final teacherId = event.teacher.iId;
-       List<Quiz> quizzes = mainRepository.getTeachersQuizzes(teacherId!) as List<Quiz>;
+       List<Quiz> quizzes = await mainRepository.getTeachersQuizzes(teacherId!) as List<Quiz>;
+       print(quizzes);
       emit(QuizesState(quizList: quizzes, requestState: RequestState.loaded));
 
     });

@@ -13,26 +13,34 @@ class MainRepositoryImp implements MainRepository{
   final String baseUrl = "http://localhost:8000/api/";
 
   // lets concider that this is teachers login
-  final jsonTeacher = """
-      {
-            "_id": "62718bf3fc6495a9942d2a59",
-            "firstname": "sslma",
-            "lastname": "test",
-            "email": "loubna@gmail.com",
-            "password": "password",
-            "createdAt": "2022-05-03T20:09:23.269Z",
-            "updatedAt": "2022-05-04T14:34:00.982Z",
-            "__v": 0,
-            "quizes": [
-                "62725c788e92aab06719995d"
-            ]
-        }
-""";
-
+  String jsonTeacher = '{"_id": "62718bf3fc6495a9942d2a59","firstname": "sslma", "lastname": "test","email": "loubna@gmail.com", "password": "password","createdAt": "2022-05-03T20:09:23.269Z","updatedAt": "2022-05-04T14:34:00.982Z", "__v": 0,"quizes": ["62725c788e92aab06719995d"]}';
+  final st = """{
+  "_id": {
+    "oid": "627254d7aa35d36c5c1b2b83"
+  },
+  "firstname": "ali",
+  "lastname": "asma",
+  "email": "loubna@gmail.com",
+  "password": "password",
+  "createdAt": {
+    "date": "2022-05-04T10:26:31.678Z"
+  },
+  "updatedAt": {
+    "date": "2022-05-04T14:25:38.200Z"
+  },
+  "__v": 0,
+  "quizes": [
+    {
+      "oid": "62725c788e92aab06719995d"
+    }
+  ]
+}""";
 
   @override
   Teacher? login(String email, String password) {
-    return Teacher.fromJson(json.decode(jsonTeacher) as Map<String, dynamic>);
+    Teacher teacher = Teacher.fromJson(json.decode(st) as Map<String, dynamic>);
+    //print(json.decode(jsonTeacher));
+    return teacher;//Teacher(iId: Id(oid: "62718bf3fc6495a9942d2a59"));
   }
 
   @override

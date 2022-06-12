@@ -39,25 +39,51 @@ class AddQuestionForm extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 125),),
+                  Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 125),
+                      child: Icon(
+                        Icons.question_mark,
+                        color: Colors.purple,
+                        size: 55,
+                      )),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 125),
-                    child: Text(
-                      "Add a quiz",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 45,
-                      ),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Add a question",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 45,
+                          ),
+                        ),
+                        Text(
+                          "for '${quiz.title!}' quiz.",
+                          style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 22),
                     child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter question.';
+                        }
+                        if(value.length < 5 ){
+                          return "Please enter a valid question (> 5 chars).";
+                        }
+                        return null;
+                      },
                       controller: null,
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
-                        hintText: 'Quiz title',
+                        hintText: 'Question ?',
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.purple,
@@ -81,11 +107,20 @@ class AddQuestionForm extends StatelessWidget {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 22),
                     child: TextFormField(
+                       validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter question score.';
+                        }
+                        if(double.tryParse(value) == null ){
+                          return "Value must be numeric";
+                        }
+                        return null;
+                      },
                       controller: null,
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
-                        hintText: 'Unique A ccess key for students',
+                        hintText: 'Score',
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.purple,
@@ -100,9 +135,44 @@ class AddQuestionForm extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(7),
                         ),
-                        prefixIcon: Icon(
-                          Icons.vpn_key,
+                        suffixIcon: null,
+                      ),
+                      style: null,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 22),
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter question duration, if the question is not time limitted, enter -1';
+                        }
+                        if(double.tryParse(value) == null ){
+                          return "Value must be numeric";
+                        }
+                        return null;
+                      },
+                      controller: null,
+                      autofocus: true,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        hintText: 'Duration',
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.purple,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(7),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.purple,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        prefixIcon: Icon(Icons.lock_clock),
                         suffixIcon: null,
                       ),
                       style: TextStyle(

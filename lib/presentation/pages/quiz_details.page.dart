@@ -14,10 +14,12 @@ class QuizDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   
     // access routing sent arguments
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
     Quiz quiz = arguments['quiz'];
+     BlocProvider.of<QuestionsBloc>(context).add(GetQuizQuestionsEvent(quizId: quiz.sId));
     //print(arguments);
     return Scaffold(
       appBar: AppBar(
@@ -39,13 +41,11 @@ class QuizDetails extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                       // TODO: state quizes to listview
-                      itemCount: 10,
+                      itemCount: state.questionList.length,
                       itemBuilder: ((context, index) {
+                        print(state.questionList[index].content);
                         return QuestionsListItem(
-                            question: Question(
-                                sId: "fddf",
-                                score: 154,
-                                content: "Content ?"));
+                            question: state.questionList[index]);
                       })),
                 ),
               ],

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 import 'package:quixam_frontend_flutter/bloc/quizesBloc/quizes_bloc.dart';
 import 'package:quixam_frontend_flutter/entities/commun_classes.dart';
@@ -31,8 +32,10 @@ class QuestionsBloc extends Bloc<QuestionsEvent, QuestionsState> {
 
     });
 
-    on<GetQuizQuestionsEvent>((event, emit){
-      print("qq");
+    on<GetQuizQuestionsEvent>((event, emit) async {
+      final id = event.quizId;
+      List<Question>? questions = await  mainRepository.getQuizsQuestions(id!);
+      emit(QuestionsState(questionList: questions!, requestState: RequestState.loaded));
     });
   }
 }

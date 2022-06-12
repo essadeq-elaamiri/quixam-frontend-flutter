@@ -12,8 +12,8 @@ class GetOneQuizEvent extends QuizesEvent{
 }
 
 class GetAllStudentQuizesEvent extends QuizesEvent{
-  Student student;
-  GetAllStudentQuizesEvent({required this.student});
+  String studentId;
+  GetAllStudentQuizesEvent({required this.studentId});
 }
 
 class GetAllTeacherQuizesEvent extends QuizesEvent{

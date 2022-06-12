@@ -51,7 +51,6 @@ class QuestionsListItem extends StatelessWidget {
                   //print(question.content!);
                   // sending to answers list
                   //BlocProvider.of<QuestionsBloc>(context).add(GetQuizQuestionsEvent(quizId: quiz.iId));
-
                   Navigator.pushNamed(context, "/QuestionDetails",
                       arguments: {'question': question});
                 },

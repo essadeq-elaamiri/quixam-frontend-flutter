@@ -91,9 +91,34 @@ class MainRepositoryImp {
   }
 
   
-  Future<List<Question>>? getQuizsQuestions(String quizId) {
-    // TODO: implement getQuizsQuestions
-    throw UnimplementedError();
+  Future<List<Question>>? getQuizsQuestions(String quizId) async {
+    final response = await http.get(Uri.parse(baseUrl + "quizes/${quizId}/questions"));
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      Iterable iterable = json.decode(response.body);
+      List<Question> questions= List<Question>.from(iterable.map((model)=> Question.fromJson(model)));
+      return await questions;
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to create album.');
+    }
+  }
+
+  Future<List<Answer>>? getQuestionsAnswers(String questionId) async {
+    final response = await http.get(Uri.parse(baseUrl + "questions/${questionId}/answers"));
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      Iterable iterable = json.decode(response.body);
+      List<Answer> answers= List<Answer>.from(iterable.map((model)=> Question.fromJson(model)));
+      return await answers;
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to create album.');
+    }
   }
 
   
@@ -106,10 +131,31 @@ class MainRepositoryImp {
   Future<List<Quiz>> getTeachersQuizzes({required String teacherId}) async {
     final response =
         await http.get(Uri.parse(baseUrl + "teachers/${teacherId}/quizes"));
+    print(baseUrl + "teachers/${teacherId}/quizes");
     if (response.statusCode == 200) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
-      return jsonDecode(response.body);
+      Iterable iterable = json.decode(response.body);
+      List<Quiz> quizzes= List<Quiz>.from(iterable.map((model)=> Quiz.fromJson(model)));
+      return await quizzes;
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to create album.');
+    }
+  }
+
+  
+  Future<List<Quiz>> getStudentsQuizzes({required String studentId}) async {
+    final response =
+        await http.get(Uri.parse(baseUrl + "students/${studentId}/quizes"));
+    //print(baseUrl + "teachers/${studentId}/quizes");
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      Iterable iterable = json.decode(response.body);
+      List<Quiz> quizzes= List<Quiz>.from(iterable.map((model)=> Quiz.fromJson(model)));
+      return await quizzes;
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.

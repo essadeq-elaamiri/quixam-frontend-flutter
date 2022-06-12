@@ -14,6 +14,8 @@ class QuestionDetails extends StatelessWidget {
     // access routing sent arguments 
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
     Question question = arguments['question'];
+    BlocProvider.of<AnswersBloc>(context).add(GetQuestionsAnswers(questionId: question.sId!));
+
     //print(arguments);
     return Scaffold(
       appBar: AppBar(
